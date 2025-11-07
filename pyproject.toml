@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "asd-developer"
+name = "asd-examples"
 version = "0.1.0"
 description = "Examples for using ASD tooling in hardware development"
 authors = ["Danilo Sijacic <danilo.sijacic@gmail.com>"]

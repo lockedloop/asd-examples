@@ -196,7 +196,7 @@ make test-cov
 ## Project Structure
 
 ```text
-asd-developer/
+asd-examples/
 ├── .editorconfig              # Editor configuration for consistent formatting
 ├── .gitignore                 # Git ignore patterns
 ├── .markdownlint.json         # Markdown linting configuration
