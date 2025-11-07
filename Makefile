@@ -18,13 +18,13 @@ setup: install-dev  ## Set up development environment
 	@echo "Development environment setup complete!"
 	@echo "Run 'poetry shell' to activate the virtual environment"
 
-format:  ## Format code with black and ruff
-	poetry run black .
+format:  ## Format code with ruff
 	poetry run ruff check --fix .
+	poetry run ruff format .
 
 lint:  ## Run linting checks
 	poetry run ruff check .
-	poetry run black --check .
+	poetry run ruff format --check .
 
 type-check:  ## Run type checking with mypy
 	@if find . -name '*.py' -not -path '*/\.*' | grep -q .; then \

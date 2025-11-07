@@ -1,6 +1,5 @@
 module counter #(
-    parameter int WIDTH = 8,
-    parameter int MAX_COUNT = 255
+    parameter int WIDTH = 8
 )(
     input  logic             clk,
     input  logic             rst,
@@ -14,13 +13,8 @@ module counter #(
             count <= '0;
             overflow <= 1'b0;
         end else if (enable) begin
-            if (count >= MAX_COUNT[$bits(count)-1:0]) begin
-                count <= '0;
-                overflow <= 1'b1;
-            end else begin
-                count <= count + 1;
-                overflow <= 1'b0;
-            end
+            count <= count + 1;
+            overflow <= &count;
         end
     end
 

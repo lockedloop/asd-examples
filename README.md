@@ -38,6 +38,14 @@ curl -sSL https://install.python-poetry.org | python3 -
 pip install --user poetry
 ```
 
+**Install Poetry shell plugin (recommended for convenience):**
+
+```bash
+poetry self add poetry-plugin-shell
+```
+
+This plugin restores the `poetry shell` command that activates the virtual environment.
+
 ### 2. Set Up Development Environment
 
 The easiest way to set up your development environment is using the provided Makefile:
@@ -56,6 +64,19 @@ This command will:
 
 <!-- markdownlint-enable MD013 -->
 
+After setup completes, activate the virtual environment:
+
+```bash
+# Option 1: Using poetry shell (requires poetry-plugin-shell installed)
+poetry shell
+
+# Option 2: Using Poetry's built-in command
+poetry env activate
+
+# Option 3: Run commands without activation
+poetry run <command>
+```
+
 **Manual setup (if you prefer):**
 
 ```bash
@@ -65,8 +86,11 @@ poetry install
 # Install pre-commit hooks
 poetry run pre-commit install
 
-# Activate the virtual environment
+# Activate the virtual environment (requires poetry-plugin-shell)
 poetry shell
+
+# Alternative: use Poetry's built-in env activate command
+poetry env activate
 ```
 
 ### 3. Install ASD
@@ -79,12 +103,31 @@ Choose one of the following installation methods:
 poetry run pip install git+https://github.com/lockedloop/asd.git
 ```
 
-**Option 2: Install in Editable Mode (For ASD Development)**
+**Option 2: Install in Editable Mode from Local Clone (For ASD Development)**
+
+If you have ASD cloned locally (e.g., at `~/Git/asd`), install it in editable mode:
 
 ```bash
-# Clone the ASD repository first, then:
-poetry run pip install -e /path/to/your/local/asd
+poetry run pip install -e ~/Git/asd
 ```
+
+This allows you to make changes to ASD and see them reflected immediately without reinstalling.
+
+**Option 3: Add ASD as Poetry Dependency**
+
+You can also add ASD directly to your `pyproject.toml`:
+
+<!-- markdownlint-disable MD013 -->
+
+```bash
+# For regular installation from Git
+poetry add git+https://github.com/lockedloop/asd.git
+
+# For editable/development mode from local path
+poetry add --editable ~/Git/asd
+```
+
+<!-- markdownlint-enable MD013 -->
 
 ### 4. Verify Installation
 
@@ -99,22 +142,12 @@ poetry run asd --help
 
 This project uses modern Python development tools to ensure code quality:
 
-### Code Formatting
+### Code Formatting and Quality
 
 <!-- markdownlint-disable MD013 -->
 
-- **Black**: Opinionated code formatter (line length: 100 characters)
-- **Ruff**: Fast Python linter and formatter
-
-<!-- markdownlint-enable MD013 -->
-
-### Code Quality
-
-<!-- markdownlint-disable MD013 -->
-
-- **Ruff**: Comprehensive linting (replaces flake8, isort, and more)
+- **Ruff**: Fast Python linter and formatter (replaces flake8, isort, black, and more)
 - **Mypy**: Static type checking for type safety
-- **Bandit**: Security vulnerability scanner
 
 <!-- markdownlint-enable MD013 -->
 
@@ -127,9 +160,8 @@ Pre-commit hooks automatically run code quality checks before each commit:
 - Trailing whitespace removal
 - End-of-file fixer
 - YAML/TOML/JSON validation
-- Python code formatting (Black, Ruff)
+- Python code formatting and linting (Ruff)
 - Type checking (Mypy)
-- Security checks (Bandit)
 
 <!-- markdownlint-enable MD013 -->
 
@@ -142,7 +174,7 @@ make help          # Show all available commands
 make install       # Install project dependencies (production)
 make install-dev   # Install with development dependencies
 make setup         # Complete development environment setup
-make format        # Format code with Black and Ruff
+make format        # Format code with Ruff
 make lint          # Run linting checks
 make type-check    # Run type checking with Mypy
 make test          # Run tests
@@ -217,7 +249,6 @@ Contains all project metadata, dependencies, and tool configurations for:
 
 - Poetry (dependency management)
 - Ruff (linting and formatting)
-- Black (code formatting)
 - Mypy (type checking)
 - Pytest (testing)
 - Coverage (code coverage)
@@ -253,7 +284,7 @@ venv\Scripts\activate     # On Windows
 pip install --upgrade pip
 
 # Install dependencies (manually, since no requirements.txt)
-pip install ruff black mypy pre-commit pytest pytest-cov
+pip install ruff mypy pre-commit pytest pytest-cov
 
 # Install ASD
 pip install git+https://github.com/lockedloop/asd.git
@@ -279,7 +310,6 @@ When contributing to this repository:
 - [ASD Main Repository](https://github.com/lockedloop/asd)
 - [Poetry Documentation](https://python-poetry.org/docs/)
 - [Ruff Documentation](https://docs.astral.sh/ruff/)
-- [Black Documentation](https://black.readthedocs.io/)
 - [Mypy Documentation](https://mypy.readthedocs.io/)
 - [Pre-commit Documentation](https://pre-commit.com/)
 

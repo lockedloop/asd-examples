@@ -17,15 +17,7 @@ default = 8
 wide = 16
 narrow = 4
 
-[parameters.MAX_COUNT]
-default = 255
-wide = 31
-
-[parameter_sets.default]
-
 [tools.simulation]
-simulator = "verilator"
-parameter_set = "default"
+tests = ["examples/counter/sim/sim_counter.py"]
 
 [tools.lint]
-parameter_set = "default"
