@@ -1,0 +1,31 @@
+[asd]
+version = "1.0"
+generated = true
+
+[module]
+name = "counter"
+top = "counter"
+type = "rtl"
+
+[module.sources]
+modules = [
+    "examples/counter/rtl/counter.sv",
+]
+
+[parameters.WIDTH]
+default = 8
+wide = 16
+narrow = 4
+
+[parameters.MAX_COUNT]
+default = 255
+wide = 31
+
+[parameter_sets.default]
+
+[tools.simulation]
+simulator = "verilator"
+parameter_set = "default"
+
+[tools.lint]
+parameter_set = "default"
