@@ -95,36 +95,32 @@ poetry env activate
 
 ### 3. Install ASD
 
-Choose one of the following installation methods:
+#### Default Installation (Included in `make setup`)
 
-**Option 1: Install from Git Repository (Recommended for Users)**
+Running `make setup` automatically installs ASD from the Git repository. No additional steps needed!
+
+#### Alternative Installation Methods
+
+If you need to install ASD separately or update it:
+
+#### Option 1: Install from Git Repository (Recommended)
 
 ```bash
 poetry run pip install git+https://github.com/lockedloop/asd.git
 ```
 
-**Option 2: Install in Editable Mode from Local Clone (For ASD Development)**
+#### Option 2: For ASD Contributors/Developers Only
 
-If you have ASD cloned locally (e.g., at `~/Git/asd`), install it in editable mode:
-
-```bash
-poetry run pip install -e ~/Git/asd
-```
-
-This allows you to make changes to ASD and see them reflected immediately without reinstalling.
-
-**Option 3: Add ASD as Poetry Dependency**
-
-You can also add ASD directly to your `pyproject.toml`:
+If you're developing ASD itself and have it cloned locally (e.g., at `~/Git/asd`):
 
 <!-- markdownlint-disable MD013 -->
 
 ```bash
-# For regular installation from Git
-poetry add git+https://github.com/lockedloop/asd.git
-
-# For editable/development mode from local path
+# Install in editable mode
 poetry add --editable ~/Git/asd
+
+# IMPORTANT: Do NOT commit pyproject.toml changes with local paths!
+# This will break the installation for other users.
 ```
 
 <!-- markdownlint-enable MD013 -->

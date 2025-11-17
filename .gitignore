@@ -135,3 +135,6 @@ Thumbs.db
 
 # Poetry
 poetry.lock
+
+# ASD build artifacts
+asdw/

@@ -1,0 +1,27 @@
+[asd]
+version = "1.0"
+generated = true
+
+[module]
+name = "axis_skid_buffer"
+top = "axis_skid_buffer"
+type = "rtl"
+
+[module.sources]
+modules = [
+    "examples/axis_skid_buffer/rtl/axis_skid_buffer.sv",
+]
+
+[parameters.DATA_WIDTH]
+default = 8
+narrow = 8
+wide = 32
+
+[parameters.TLAST_ENABLE]
+default = 1
+disabled = 0
+
+[tools.simulation]
+tests = ["examples/axis_skid_buffer/sim/sim_axis_skid_buffer.py"]
+
+[tools.lint]
